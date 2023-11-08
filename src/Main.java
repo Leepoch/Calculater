@@ -28,14 +28,22 @@ public class Main {
 
 class ExpressionInfo {
     String getResultInRomeNumber(String firstNumber,String secondNumber,String mathSymbol) throws IOException {
-        String[] romeNumbers = {"I","II","III","Iv","V","VI","VII","VIII","IX","X"};
+        String[] romeNumbers = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+                "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
+                "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX",
+                "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX",
+                "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
+                "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
+                "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"
+        };   //                Ничего лучше не придумал :)
+
         DigitConverter firstRomeNumber = DigitConverter.valueOf(firstNumber);
         DigitConverter secondRomeNumber = DigitConverter.valueOf(secondNumber);
         String firstArabicNumber = firstRomeNumber.getConversion();
         String secondArabicNumber = secondRomeNumber.getConversion();
         int result = getResultInArabicNumber(firstArabicNumber, secondArabicNumber, mathSymbol);
-        if(result < 1 || result > 10) {
-            throw new IOException("Итоговое выражение меньше единицы или больше десяти");
+        if(result < 1) {
+            throw new IOException("Итоговое выражение меньше единицы");
         }
         return romeNumbers[result-1];
     }
@@ -43,7 +51,7 @@ class ExpressionInfo {
     int getResultInArabicNumber(String firstNumber, String secondNumber, String mathSymbol) throws IOException {
       int intFirstNumber = Integer.parseInt(firstNumber);
       int intSecondNumber = Integer.parseInt(secondNumber);
-      if(intFirstNumber < 1 || intFirstNumber > 10) throw new IOException("Первое число не удовлетворяет условиям");
+      if(intFirstNumber < 1 || intFirstNumber > 10 ) throw new IOException("Первое число не удовлетворяет условиям");
       if(intSecondNumber < 1 || intSecondNumber > 10) throw new IOException("Второе число не удовлетворяет условиям");
       switch (mathSymbol) {
           case "-":
